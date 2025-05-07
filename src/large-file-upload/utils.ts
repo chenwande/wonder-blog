@@ -43,3 +43,16 @@ export const getFileHashByWebWorker = (chunks: Blob[]): Promise<string> => {
     };
   });
 };
+
+
+/* 
+./worker.ts文件
+
+import { getFileHash } from './utils';
+
+self.onmessage = async function (e: MessageEvent<{ chunks: Blob[] }>) {
+  const hash = await getFileHash(e.data.chunks);
+  self.postMessage(hash);
+};
+
+*/
